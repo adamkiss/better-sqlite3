@@ -26,5 +26,13 @@ jobs:
         with:
           node-version: 16
       - run: npm install --ignore-scripts
-      - run: npx --no-install prebuild -r node -t 16.0.0 --include-regex 'better_sqlite3.node$' -u ${{ secrets.GITHUB_TOKEN }}
-      - run: npx --no-install prebuild -r node -t 16.0.0 --include-regex 'better_sqlite3.node$' --arch arm64 -u ${{ secrets.GITHUB_TOKEN }}
+      - run: npx --no-install prebuild -r node -t 16.0.0 --include-regex 'better_sqlite3.node$'
+      - run: npx --no-install prebuild -r node -t 16.0.0 --include-regex 'better_sqlite3.node$' --arch arm64
+      - uses: actions/upload-artifact@v3
+        with:
+          name: better-sqlite3-v8.0.1-node-v93-darwin-x64.tar.gz
+          path: prebuilds/better-sqlite3-v8.0.1-node-v93-darwin-x64.tar.gz
+      - uses: actions/upload-artifact@v3
+        with:
+          name: better-sqlite3-v8.0.1-node-v93-darwin-arm64.tar.gz
+          path: prebuilds/better-sqlite3-v8.0.1-node-v93-darwin-arm64.tar.gz
